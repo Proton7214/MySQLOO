@@ -37,6 +37,10 @@ function database:Connect()
 	return true
 end
 
+function database:IsConnected()
+	return self:status() == mysqloo.DATABASE_CONNECTED
+end
+
 function database:Query(str, callback, ...)
 	if (self.Disconnected) then error("database already disconnected") end
 	local additionalArgs = {...}
